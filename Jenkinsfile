@@ -32,6 +32,7 @@ stages{
                 stage ('Deploy to Staging'){
                     steps {
 		        echo 'Deploying to Staging...'
+			build job: 'deploy-to-staging'
                         //sh "scp -i /home/jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                     }
                 }
@@ -39,6 +40,7 @@ stages{
                 stage ("Deploy to Production"){
                     steps {
 		        echo "Deploying to Prod..."
+			build job: 'deploy-to-prod'
                         //sh "scp -i /home/jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
                 }
